@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using CopaFilmes.Utils;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CopaFilmes.Models
@@ -8,11 +9,10 @@ namespace CopaFilmes.Models
         public string Name { get; }
         public List<Movie> Movies { get; }
 
-        public Group(string name, IEnumerable<Movie> movies)
+        public Group(int index, IEnumerable<Movie> movies)
         {
-            Name = name;
+            Name = NumberToLetterUtil.GetName(index);
             Movies = movies.OrderByDescending(m => m.AverageRating).ThenBy(m => m.PrimaryTitle).ToList();
-
         }
 
         public void GetTop(out Movie firstMovie, out Movie secondMovie)

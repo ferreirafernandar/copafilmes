@@ -14,15 +14,19 @@ namespace CopaFilmes.Controllers
         public MoviesController(ICopaFilmesService copaFilmesService) => _copaFilmesService = copaFilmesService;
 
         [HttpGet]
-        public IList<Movie> Get()
+        public ActionResult<IList<Movie>> Get()
         {
-            return _copaFilmesService.GetMovies();
+            return Ok(_copaFilmesService.GetMovies());
         }
 
         [HttpPost]
-        public List<Movie> Game(List<Movie> movies)
+        [Route("game")]
+        public ActionResult<Movie> Game(List<Movie> movies)
         {
-            return _copaFilmesService.Game(movies);
+            if (movies.Count > 16)
+                return BadRequest("Escolha apenas 16 filmes.");
+
+            return Ok(_copaFilmesService.Game(movies));
         }
     }
 }

@@ -2,12 +2,12 @@
 
 namespace CopaFilmes.Models
 {
-    public class Chave
+    public class Match
     {
         public Movie MovieA { get; }
         public Movie MovieB { get; }
 
-        public Chave(Movie movieA, Movie movieB)
+        public Match(Movie movieA, Movie movieB)
         {
             MovieA = movieA;
             MovieB = movieB;
@@ -22,6 +22,17 @@ namespace CopaFilmes.Models
                 return MovieB;
 
             return string.Compare(MovieA.PrimaryTitle, MovieB.PrimaryTitle, StringComparison.Ordinal) >= 0 ? MovieB : MovieA;
+        }
+
+        public Movie GetLoser()
+        {
+            if (MovieA.AverageRating > MovieB.AverageRating)
+                return MovieB;
+
+            if (MovieB.AverageRating > MovieA.AverageRating)
+                return MovieA;
+
+            return string.Compare(MovieA.PrimaryTitle, MovieB.PrimaryTitle, StringComparison.Ordinal) >= 0 ? MovieA : MovieB;
         }
     }
 }
