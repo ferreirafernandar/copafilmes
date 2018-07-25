@@ -13,7 +13,7 @@
 
             value += letters[index % letters.Length];
 
-            return "Group"+value;
+            return "Group" + value;
         }
     }
 }

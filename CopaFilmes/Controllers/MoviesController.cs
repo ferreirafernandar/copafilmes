@@ -23,8 +23,8 @@ namespace CopaFilmes.Controllers
         [Route("game")]
         public ActionResult<Movie> Game(List<Movie> movies)
         {
-            if (movies.Count > 16)
-                return BadRequest("Escolha apenas 16 filmes.");
+            if (movies.Count != 16) 
+                return BadRequest("Escolha 16 filmes.");
 
             return Ok(_copaFilmesService.Game(movies));
         }

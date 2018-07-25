@@ -34,20 +34,20 @@ namespace CopaFilmes.Services
         public List<Movie> Game(List<Movie> movies)
         {
             var groups = GetGroups(movies);
+
             var resultPlayoffs = Playoffs(groups);
-            var resultQuarterFinals = Rounds(resultPlayoffs);
-            var resultSemifinal = Rounds(resultQuarterFinals);
-            var resultFinals = resultSemifinal.First();
 
+            var quarterFinals = Rounds(resultPlayoffs);
 
-            var first = resultFinals.GetWin();
-            var second = resultFinals.GetLoser();
+            var finals = Rounds(quarterFinals).First();
 
-            var match = resultQuarterFinals.First(r => r.GetWin() == first);
-            var third = match.GetLoser();
+            var first = finals.GetWin();
 
-            var result = new List<Movie> { first, second, third };
-            return result;
+            var second = finals.GetLoser();
+
+            var third = quarterFinals.First(r => r.GetWin() == first).GetLoser();
+
+            return new List<Movie> { first, second, third };
         }
 
         private static List<Group> GetGroups(List<Movie> movies)
@@ -61,13 +61,13 @@ namespace CopaFilmes.Services
                 var group = new Group(i, movies.GetRange(i * countPerGroup, countPerGroup));
                 groups.Add(group);
             }
+
             return groups;
         }
 
         private static List<Match> Playoffs(List<Group> groups)
         {
             var matches = new List<Match>();
-
             for (var i = 0; i < groups.Count; i += 2)
             {
                 var group1 = groups.ElementAt(i);
@@ -82,6 +82,7 @@ namespace CopaFilmes.Services
                 matches.Add(match1);
                 matches.Add(match2);
             }
+
             return matches;
         }
 
@@ -94,9 +95,9 @@ namespace CopaFilmes.Services
                 var firstMatch = matches.ElementAt(i);
                 var secondMatch = matches.ElementAt(i + 1);
 
-                var match1 = new Match(firstMatch.GetWin(), secondMatch.GetWin());
+                var match = new Match(firstMatch.GetWin(), secondMatch.GetWin());
 
-                result.Add(match1);
+                result.Add(match);
             }
             return result;
         }
