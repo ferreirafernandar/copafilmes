@@ -1,39 +1,38 @@
-
-  <main class="container">
-    <div class="row header-filme">
-      <div class="col ">
-        <span>Campeonato de Filmes</span>
-          <h2>Fase de seleção</h2>
-          <hr>
-          <p>Selecione 16 filmes que você deseja que entrem na competição e depois pressione o botão Gerar Meu Campeonato para
-            prosseguir</p>
-      </div>
+<main class="container">
+  <div class="row header-filme">
+    <div class="col ">
+      <span>Campeonato de Filmes</span>
+      <h2>Fase de seleção</h2>
+      <hr>
+      <p>Selecione 16 filmes que você deseja que entrem na competição e depois pressione o botão Gerar Meu Campeonato para prosseguir
+      </p>
     </div>
+  </div>
 
-    <div class="row info">
-      <div class="col-3 count">Selecionado
-        <br>
-        <span id="count">{{selectedMovies.length}}</span> de
-        <span id="qntFilmes">16</span> filmes</div>
-      <div class="col-3 offset-6">
-        <button class="btn btn-block btn-success" (click)="gerarCampeonato()">Gerar Meu Campeonato</button>
-      </div>
+  <div class="row info">
+    <div class="col-3 count">Selecionado
+      <br>
+      <span id="count">{{selectedMovies.length}}</span> de
+      <span id="qntFilmes">16</span> filmes</div>
+    <div class="col-3 offset-6">
+      <button class="btn btn-block btn-success" (click)="gerarCampeonato()">Gerar Meu Campeonato</button>
     </div>
+  </div>
 
-    <div class="container">
-      <div id="filmes" class="row">
-        <div class="col-3 filme" *ngFor="let movie of movies">
-          <div class="row">
-            <div class="col-2">
-              <input class="check-filme" type="checkbox" (change)="onCheck($event)" [value]="movie.id">
-            </div>
-            <div class="col-10">
-              <p>{{movie.primaryTitle}}</p>
-              <p>{{movie.year}}</p>
-            </div>
+  <div class="container">
+    <div id="filmes" class="row">
+      <div class="col-3 filme" *ngFor="let movie of movies">
+        <div class="row">
+          <div class="col-2">
+            <input class="check-filme" type="checkbox" (change)="onCheck($event)" [value]="movie.id">
+          </div>
+          <div class="col-10">
+            <p>{{movie.primaryTitle}}</p>
+            <p>{{movie.year}}</p>
           </div>
         </div>
       </div>
     </div>
-  </main>
-  <br>
+  </div>
+</main>
+<br>

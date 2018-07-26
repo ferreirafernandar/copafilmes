@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace CopaFilmes.Models
+﻿namespace CopaFilmes.Models
 {
     public class Movie
     {

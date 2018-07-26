@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
-using CopaFilmes.Models;
+﻿using CopaFilmes.Models;
 using CopaFilmes.Services;
+using CopaFilmes.ViewModel;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace CopaFilmes.Controllers
 {
@@ -23,12 +24,12 @@ namespace CopaFilmes.Controllers
 
         [HttpPost]
         [Route("game")]
-        public ActionResult<Movie> Game(Movies movies)
+        public ActionResult<Movie> Game(MovieViewModel movies)
         {
-            if (movies.Movie.Count != 16) 
+            if (movies.Movies.Count != 16) 
                 return BadRequest("Escolha 16 filmes.");
 
-            return Ok(_copaFilmesService.Game(movies.Movie));
+            return Ok(_copaFilmesService.Game(movies.Movies));
         }
     }
 }

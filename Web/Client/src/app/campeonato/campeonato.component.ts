@@ -17,7 +17,7 @@ export class CampeonatoComponent implements OnInit {
     this.data = this.appService.get();
 
     this.appService.postMovies(this.data)
-      .subscribe( data => {
+      .subscribe(data => {
         this.movies = data;
       });
   }
