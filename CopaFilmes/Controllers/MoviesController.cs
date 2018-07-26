@@ -1,12 +1,14 @@
 ﻿using System.Collections.Generic;
 using CopaFilmes.Models;
 using CopaFilmes.Services;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CopaFilmes.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("AllowMyOrigin")]
     public class MoviesController : ControllerBase
     {
         private readonly ICopaFilmesService _copaFilmesService;

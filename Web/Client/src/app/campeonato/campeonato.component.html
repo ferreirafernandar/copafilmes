@@ -1,0 +1,21 @@
+<main class="container">
+  <div class="row header-filme">
+      <div class="col ">
+          <h1>Campeonato de Filmes</h1>
+          <h2>Resultado Final</h2>
+          <hr>
+          <p>Veja o resultado final do campeonato de filmes de forma simples e rápida</p>
+      </div>
+  </div>
+
+  <div class="container">
+      <div id="campeonato" class="row">
+        <div class="col-12 campeonato">
+          <div class="row" *ngFor="let movie of movies; let i = index">
+              <div class="col-1">{{i + 1}}º</div>
+              <div class="col-11">{{movie.primaryTitle}}</div>
+          </div>
+      </div>
+      </div>
+  </div>
+</main>
