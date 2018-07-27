@@ -1,4 +1,4 @@
-﻿namespace CopaFilmes.Models
+﻿namespace CopaFilmes
 {
     public class AppSettings
     {

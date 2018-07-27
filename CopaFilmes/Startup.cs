@@ -1,5 +1,4 @@
-﻿using CopaFilmes.Models;
-using CopaFilmes.Services;
+﻿using CopaFilmes.Services;
 using CopaFilmes.Utils;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

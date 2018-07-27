@@ -1,6 +1,4 @@
-﻿using CopaFilmes.Models;
-
-namespace CopaFilmes.Utils
+﻿namespace CopaFilmes.Utils
 {
     public class Singleton
     {
